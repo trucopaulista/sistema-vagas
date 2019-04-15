@@ -2,7 +2,7 @@ let api = {};
 
 api.list = (req, res) => {
 
-    res.send('teste');
+    res.render('pages/client/index');
 }
 
 module.exports = api;
