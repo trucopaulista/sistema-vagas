@@ -30,9 +30,9 @@
             </li>
             <li class="collection-item">
                 <ul class="collection">
-                    <% vagas.forEach(vagas => { %>
-                        <li class="collection-item"><%= vagas.titulo %>
-                            <a href="">
+                    <% vagas.forEach(vaga => { %>
+                        <li class="collection-item"><%= vaga.titulo %>
+                            <a href="/admin/dashboard/vagas/<%= vaga.id %>">
                                 <span class="new badge" data-badge-caption="editar">
                                     <i class="material-icons right">create</i>
                                 </span>

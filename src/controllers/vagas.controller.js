@@ -10,10 +10,9 @@ api.list = async (req, res) => {
 
 api.add = async (req, res) => {
 
-    console.log(req.body);
     const { titulo, descricao, categoria } = req.body;
+
     await model.insert(`INSERT INTO vagas (titulo, descricao, idCategoria) VALUES ('${ titulo }', '${ descricao }', ${ parseInt(categoria) })`);
-    // await model.insert(`INSERT INTO vagas (titulo, descricao, idCategoria) VALUES ('${ titulo }', '${ descricao }', ${ parseInt(idCategoria) }) `);
 
     try {
         console.log('Vaga cadastrada');
@@ -21,6 +20,20 @@ api.add = async (req, res) => {
     } catch (error) {
         console.log(error);
     };
+};
+
+api.listById = async(req, res) => {
+
+    const categorias = await model.all('select * from categorias');
+    
+    res.render('pages/admin/vagas/vagas-editar', { categorias });
+}
+
+api.update = async (req, res) => {
+
+    console.log(req.body);
+    console.log('Vaga atualizada');
+    
 };
 
 module.exports = api;
