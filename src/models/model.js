@@ -45,6 +45,19 @@ api.update = async params => {
 
 };
 
+api.get = async params => {
+    
+    const db = await dbConnection;
+    const info = await db.get(params);
+
+    try {
+        console.log('Informação encontrada');
+        return info;
+    } catch (error) {
+        console.log(error);
+    }   
+}
+
 api.all = async params => {
 
     const db = await dbConnection;

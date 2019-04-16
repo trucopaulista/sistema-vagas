@@ -10,5 +10,5 @@ module.exports = app => {
     app
         .route('/admin/dashboard/vagas/:id')
         .get(vagasController.listById)
-        .put(vagasController.update)
+        .post(vagasController.update)
 };

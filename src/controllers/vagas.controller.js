@@ -24,15 +24,28 @@ api.add = async (req, res) => {
 
 api.listById = async(req, res) => {
 
-    const categorias = await model.all('select * from categorias');
-    
-    res.render('pages/admin/vagas/vagas-editar', { categorias });
+    const { id }        = req.params;    
+    const categorias    = await model.all('select * from categorias');
+    const vaga          = await model.get(`select * from vagas WHERE id = ${ id }`);
+
+    res.render('pages/admin/vagas/vagas-editar', { categorias, vaga });
 }
 
 api.update = async (req, res) => {
 
     console.log(req.body);
-    console.log('Vaga atualizada');
+    const { id } = req.params;
+    const { titulo, descricao, categoria } = req.body;
+
+    await model.update(`UPDATE vagas SET titulo = '${ titulo }', descricao = '${ descricao }', idCategoria = ${ parseInt(categoria) } WHERE id = ${ id } `);
+
+    try {
+        
+        console.log('Vaga atualizada');
+        res.redirect('/admin/dashboard');
+    } catch (error) {
+        console.log(error);
+    }
     
 };
 
