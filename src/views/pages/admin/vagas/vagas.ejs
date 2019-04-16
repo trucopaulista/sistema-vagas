@@ -3,11 +3,11 @@
     <section class="container">
         <header>
             <h1>Cadastrar nova vaga</h1>
+            <a href="javascript: window.history.go(-1)" class="btn">Voltar</a>
         </header>
 
-        <form>
+        <form method="POST">
             <fieldset>
-
                 <div class="input-field">
                     <input id="titulo" name="titulo" type="text" class="validate" placeholder="Digite o título aqui" />
                     <label class="active" for="titulo">Título</label>
@@ -22,7 +22,9 @@
                     <label for="categoria">Categoria</label>
                     <select class="browser-default" name="categoria" id="categoria">
                         <option value="">Selecione uma categoria</option>
-                        <option value="1">teste</option>
+                        <% categorias.forEach(cat => { %>
+                            <option value="<%= cat.id %>"><%= cat.name %></option>
+                        <% }) %>
                     </select>
                 </div>
             </fieldset>
