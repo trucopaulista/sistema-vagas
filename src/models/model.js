@@ -43,6 +43,20 @@ api.update = async params => {
         console.log(error);
     }
 
+};
+
+api.all = async params => {
+
+    const db = await dbConnection;
+    const all = await db.all(params);
+
+    try {
+        console.log('Dados retornados');
+        return all;
+    } catch (error) {
+        console.log(error);
+        
+    }
 }
 
 module.exports = api;

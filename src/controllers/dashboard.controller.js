@@ -4,7 +4,10 @@ let api = {};
 
 api.list = async (req, res) => {
 
-    res.render('pages/admin/dashboard/dashboard');
+    const categorias = await model.all('select * from categorias');
+    const vagas      = await model.all('select * from vagas');
+    
+    res.render('pages/admin/dashboard/dashboard', { categorias, vagas });
 }
 
 module.exports = api;

@@ -16,6 +16,7 @@
     "consign": "^0.1.6",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "material-icons": "^0.3.1",
     "materialize-css": "^1.0.0-rc.2",
     "sqlite": "^3.0.3"
   },

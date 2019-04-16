@@ -1,9 +1,47 @@
 <% include ../../../partials/head %>
 
-    <section>
+    <section class="container">
         <header>
             <h1>Dashboard</h1>
         </header>
+
+        <ul class="collection">
+            <li class="collection-item">Categorias
+                <a href="">
+                    <span class="new badge" data-badge-caption="adicionar">
+                        <i class="material-icons right">create</i>
+                    </span>
+                </a>
+            </li>
+            <li class="collection-item">
+                <ul class="collection">
+                    <% categorias.forEach(cat => { %>
+                        <li class="collection-item"><%= cat.name %></li>
+                    <% }) %>
+                </ul>
+            </li>
+
+            <li class="collection-item">Vagas
+                <a href="">
+                    <span class="new badge" data-badge-caption="adicionar">
+                        <i class="material-icons right">create</i>
+                    </span>
+                </a>
+            </li>
+            <li class="collection-item">
+                <ul class="collection">
+                    <% vagas.forEach(vagas => { %>
+                        <li class="collection-item"><%= vagas.titulo %>
+                            <a href="">
+                                <span class="new badge" data-badge-caption="editar">
+                                    <i class="material-icons right">create</i>
+                                </span>
+                            </a>
+                        </li>
+                    <% }) %>
+                </ul>
+            </li>
+        </ul>
     </section>
 
 <% include ../../../partials/footer %>
