@@ -56,6 +56,13 @@ api.get = async params => {
     } catch (error) {
         console.log(error);
     }   
+};
+
+api.delete = async params => {
+
+    const db = await dbConnection;
+
+    await db.run(params);
 }
 
 api.all = async params => {

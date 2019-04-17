@@ -49,4 +49,23 @@ api.update = async (req, res) => {
     
 };
 
+api.delete = async (req, res) => {
+    
+    const { id } = req.params;
+    
+    await model.delete(`DELETE from vagas WHERE id = ${ id } `)
+    
+    try {
+        
+        console.log('Vaga removida');
+        const categorias = await model.all('select * from categorias');
+        const vagas      = await model.all('select * from vagas');
+        
+        res.render('pages/admin/dashboard/dashboard', { categorias, vagas });
+    } catch (error) {
+        console.log(error);
+    }
+    
+}
+
 module.exports = api;

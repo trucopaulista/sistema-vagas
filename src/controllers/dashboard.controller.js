@@ -8,6 +8,6 @@ api.list = async (req, res) => {
     const vagas      = await model.all('select * from vagas');
     
     res.render('pages/admin/dashboard/dashboard', { categorias, vagas });
-}
+};
 
 module.exports = api;

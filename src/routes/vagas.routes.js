@@ -11,4 +11,8 @@ module.exports = app => {
         .route('/admin/dashboard/vagas/:id')
         .get(vagasController.listById)
         .post(vagasController.update)
+
+    app
+        .route('/admin/dashboard/vagas/delete/:id')
+        .get(vagasController.delete)
 };
