@@ -58,10 +58,7 @@ api.delete = async (req, res) => {
     try {
         
         console.log('Vaga removida');
-        const categorias = await model.all('select * from categorias');
-        const vagas      = await model.all('select * from vagas');
-        
-        res.render('pages/admin/dashboard/dashboard', { categorias, vagas });
+        res.redirect('/admin/dashboard');
     } catch (error) {
         console.log(error);
     }

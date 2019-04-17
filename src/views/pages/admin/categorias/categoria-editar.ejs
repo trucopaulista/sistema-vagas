@@ -1,0 +1,24 @@
+<% include ../../../partials/head %>
+
+    <section class="container">
+        <header>
+            <h1>Editar Categoria</h1>
+            <a href="javascript: window.history.go(-1)" class="btn">Voltar</a>
+        </header>
+
+        <form method="POST">
+            <fieldset>
+                <div class="input-field">
+                    <input id="name" name="name" type="text" class="validate" placeholder="Digite o título aqui" value="<%= categoria.name %>" />
+                    <label class="active" for="name">Título</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <button type="submit" class="btn waves-effect waves-light" type="submit" name="action">Atualizar</button>
+                <button type="button" class="btn waves-effect waves-light" type="submit" name="action">Limpar</button>
+            </fieldset>
+        </form>
+    </section>
+
+<% include ../../../partials/footer %>

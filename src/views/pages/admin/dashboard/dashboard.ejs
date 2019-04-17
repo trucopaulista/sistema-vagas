@@ -16,7 +16,13 @@
             <li class="collection-item">
                 <ul class="collection">
                     <% categorias.forEach(cat => { %>
-                        <li class="collection-item"><%= cat.name %></li>
+                        <li class="collection-item"><%= cat.name %>
+                            <a href="/admin/dashboard/categoria/editar/<%= cat.id %>">
+                                <span class="new badge" data-badge-caption="editar">
+                                    <i class="material-icons right">create</i>
+                                </span>
+                            </a>
+                        </li>
                     <% }) %>
                 </ul>
             </li>
@@ -32,7 +38,7 @@
                 <ul class="collection">
                     <% vagas.forEach(vaga => { %>
                         <li class="collection-item"><%= vaga.titulo %>
-                            <a href="/admin/dashboard/vagas/delete/<%= vaga.id %>" onclick="app.remove(event)" >
+                            <a href="/admin/dashboard/vagas/delete/<%= vaga.id %>">
                                 <span class="new badge" data-badge-caption="remover">
                                     <i class="material-icons right">delete</i>
                                 </span>

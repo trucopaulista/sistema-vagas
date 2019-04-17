@@ -6,4 +6,9 @@ module.exports = app => {
         .route('/admin/dashboard/categorias')
         .get(categoriaController.list)
         .post(categoriaController.add)
+
+    app
+        .route('/admin/dashboard/categoria/editar/:id')
+        .get(categoriaController.listById)
+        .post(categoriaController.update)
 }
