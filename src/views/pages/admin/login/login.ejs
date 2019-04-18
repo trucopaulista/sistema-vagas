@@ -1,0 +1,27 @@
+<% include ../../../partials/head %>
+
+    <section class="container">
+        <header>
+            <h1>Login</h1>
+        </header>
+
+        <form method="POST">
+            <fieldset>
+                <div class="input-field">
+                    <input id="login" name="login" type="text" class="validate" placeholder="Digite o seu login aqui" />
+                    <label class="active" for="login">Login</label>
+                </div>
+
+                <div class="input-field">
+                    <input id="password" name="password" type="password" class="validate" placeholder="Digite a sua senha aqui" />
+                    <label class="active" for="password">Senha</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <button type="submit" class="btn waves-effect waves-light" type="submit" name="action">Entrar</button>
+            </fieldset>
+        </form>
+    </section>
+
+<% include ../../../partials/footer %>

@@ -81,6 +81,7 @@ api.all = async params => {
 
 module.exports = api;
 
+// await model.create('CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY, login TEXT, password TEXT)');
 // create 'CREATE TABLE IF NOT EXISTS categorias (id INTEGER PRIMARY KEY, name TEXT)'
 // insert `INSERT INTO categorias (name) VALUES ('Front-End')`
 // update 'UPDATE vagas SET titulo = "Front-end" WHERE id = 2'
