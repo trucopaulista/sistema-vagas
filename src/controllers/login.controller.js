@@ -20,17 +20,17 @@ api.login = async (req, res) => {
     try {
     
         if(user) {
-            
-            // console.log('autenticado');
-            // res.redirect('/admin/dashboard');
-            // res.json({ auth: user.login });
 
-            const token = jwt.sign({ id: user.id }, authCecret.secret, {
+            const token = jwt.sign(
+                { id: user.id }
+                , authCecret.secret
+                , { expiresIn: 86400 }
+            );
 
-                expiresIn: 86400,
-            })
-
-            res.send({ user, token });
+            console.log('autenticado');
+            res.set('x-access-token', token);
+            res.redirect('/admin/dashboard');
+            res.json({ user: user.login, token });
         } else {
             console.log('Login ou senha inválidos');
             res.json({ fail: 'Login ou senha inválidos' });
@@ -40,6 +40,28 @@ api.login = async (req, res) => {
         res.json(error)
     }
     
+};
+
+api.requireToken = (req, res, next) => {
+
+    const token = req.headers['x-access-token'];
+    
+    if(!token) {
+        res.status(401).json({ fail: 'Token inválido' });
+        return;
+    }
+
+    jwt.verify(token, authCecret.secret, (erro, decoded) => {
+
+        if(erro) {
+            console.log('Token inválido');
+            res.status(401).json({ fait: 'Sem permissão de acesso' });
+            return;
+        }
+
+        req.user = decoded.id;
+        next();
+    })
 }
 
 module.exports = api;
