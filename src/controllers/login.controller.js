@@ -1,4 +1,7 @@
-const model = require('../models/model');
+const model     = require('../models/model');
+const jwt       = require('jsonwebtoken');
+const authCecret= require('../config/auth');
+
 let api     = {};
 
 api.list = (req, res) => {
@@ -18,9 +21,16 @@ api.login = async (req, res) => {
     
         if(user) {
             
-            console.log('autenticado');
-            res.redirect('/admin/dashboard');
-            res.json({ auth: user.login });
+            // console.log('autenticado');
+            // res.redirect('/admin/dashboard');
+            // res.json({ auth: user.login });
+
+            const token = jwt.sign({ id: user.id }, authCecret.secret, {
+
+                expiresIn: 86400,
+            })
+
+            res.send({ user, token });
         } else {
             console.log('Login ou senha inválidos');
             res.json({ fail: 'Login ou senha inválidos' });
